@@ -56,76 +56,100 @@ export default function DayView() {
             key={ex.id}
             className="card overflow-hidden"
           >
-            <div className="flex flex-wrap gap-5 p-4 sm:p-5">
-              {ex.imageUrl && (
-                <div className="shrink-0">
-                  <div className="text-xs font-medium text-zinc-500 mb-1.5">Izvođenje</div>
-                  <div
-                    className="h-[180px] w-[220px] min-w-[220px] overflow-hidden rounded-xl bg-zinc-950/80 ring-1 ring-white/10 shadow-lg"
-                  >
-                    <img
-                      src={ex.imageUrl ?? undefined}
-                      alt={`Kako raditi: ${ex.name}`}
-                      className="h-full w-full object-contain"
-                    />
+            <div className="flex flex-col gap-4 p-4 sm:p-5 md:flex-row md:gap-5">
+              <div className="order-2 w-full md:order-1 md:w-[260px] md:min-w-[260px] md:shrink-0">
+                {ex.imageUrl && (
+                  <div className="w-full">
+                    <div className="mb-1.5 text-xs font-medium text-zinc-500">Izvođenje</div>
+                    <div className="aspect-[11/8] w-full overflow-hidden rounded-xl bg-zinc-950/80 ring-1 ring-white/10 shadow-lg md:h-[180px] md:aspect-auto">
+                      <img
+                        src={ex.imageUrl ?? undefined}
+                        alt={`Kako raditi: ${ex.name}`}
+                        className="h-full w-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
-              )}
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <h2 className="m-0 text-base font-semibold tracking-tight sm:text-lg">
+                )}
+              </div>
+
+              <div className="order-1 min-w-0 flex-1 md:order-2">
+                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-4">
+                  <h2 className="m-0 text-base font-semibold tracking-tight sm:text-lg md:pr-2">
                     <span className="text-zinc-400">{i + 1}.</span> {ex.name}
                   </h2>
-                  {ex.setsReps && <span className="badge max-w-full whitespace-normal">{ex.setsReps}</span>}
+                  {ex.setsReps && (
+                    <span className="badge hidden max-w-full whitespace-normal md:inline-flex md:shrink-0">
+                      {ex.setsReps}
+                    </span>
+                  )}
                 </div>
-                {ex.setsReps && (
-                  <p className="mt-2 text-sm text-emerald-400 sm:hidden">{ex.setsReps}</p>
-                )}
+
                 {ex.description && (
-                  <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-zinc-300">{ex.description}</p>
+                  <p className="mt-3 hidden whitespace-pre-wrap text-sm leading-relaxed text-zinc-300 md:block">
+                    {ex.description}
+                  </p>
                 )}
+
                 {ex.videoUrl && (
                   <a
                     href={ex.videoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex text-sm font-medium text-emerald-400 hover:text-emerald-300"
+                    className="inline-flex text-sm font-medium text-emerald-400 hover:text-emerald-300 md:mt-3"
                   >
                     Pogledaj video →
                   </a>
                 )}
               </div>
             </div>
+
+            <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:hidden">
+              {ex.setsReps && <span className="badge w-fit max-w-full whitespace-normal">{ex.setsReps}</span>}
+              {ex.description && (
+                <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-zinc-300">{ex.description}</p>
+              )}
+              {ex.videoUrl && (
+                <a
+                  href={ex.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex text-sm font-medium text-emerald-400 hover:text-emerald-300"
+                >
+                  Pogledaj video →
+                </a>
+              )}
+            </div>
           </article>
         ))}
       </div>
 
       {day.exercises.length > 0 && (
-      <details className="card mt-6 p-4 sm:p-5">
-        <summary className="cursor-pointer select-none text-sm font-semibold text-zinc-100">
-          Posebne tehnike (podsetnik)
-        </summary>
-        <div className="mt-3 space-y-3 text-sm text-zinc-300">
-          <div>
-            <div className="font-semibold text-zinc-100">Drop set</div>
-            <div className="text-zinc-300">
-              Radiš seriju do otkaza, odmah smanjiš težinu i nastaviš bez odmora.
+        <details className="card mt-6 p-4 sm:p-5">
+          <summary className="cursor-pointer select-none text-sm font-semibold text-zinc-100">
+            Posebne tehnike (podsetnik)
+          </summary>
+          <div className="mt-3 space-y-3 text-sm text-zinc-300">
+            <div>
+              <div className="font-semibold text-zinc-100">Drop set</div>
+              <div className="text-zinc-300">
+                Radiš seriju do otkaza, odmah smanjiš težinu i nastaviš bez odmora.
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-zinc-100">Triple drop set</div>
+              <div className="text-zinc-300">
+                Isto kao drop set, ali smanjiš težinu 3 puta zaredom bez odmora.
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-zinc-100">Cluster set</div>
+              <div className="text-zinc-300">
+                Npr. 5 ponavljanja → pauza 15 sekundi → 5 ponavljanja → pauza → 5 ponavljanja (sve se računa kao jedna serija).
+              </div>
             </div>
           </div>
-          <div>
-            <div className="font-semibold text-zinc-100">Triple drop set</div>
-            <div className="text-zinc-300">
-              Isto kao drop set, ali smanjiš težinu 3 puta zaredom bez odmora.
-            </div>
-          </div>
-          <div>
-            <div className="font-semibold text-zinc-100">Cluster set</div>
-            <div className="text-zinc-300">
-              Npr. 5 ponavljanja → pauza 15 sekundi → 5 ponavljanja → pauza → 5 ponavljanja (sve se računa kao jedna serija).
-            </div>
-          </div>
-        </div>
-      </details>
+        </details>
       )}
     </div>
   )

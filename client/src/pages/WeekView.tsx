@@ -26,7 +26,7 @@ export default function WeekView() {
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">{schedule.name}</h1>
-          <p className="mt-1 text-sm text-zinc-400">Klikni dan da vidiš vježbe, serije i opis.</p>
+          <p className="mt-1 text-sm text-zinc-400">Klikni dan da vidiš vežbe, serije i opis.</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="badge badge-emerald">{schedule.days.length} dana</span>
