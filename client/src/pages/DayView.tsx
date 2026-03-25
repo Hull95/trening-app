@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { getDay, ASSET_ORIGIN } from '../api'
+import { getDay } from '../api'
 import type { Day } from '../types'
 
 const DAY_NAMES = ['Ponedeljak', 'Utorak', 'Sreda', 'Četvrtak', 'Petak', 'Subota', 'Nedelja']
@@ -64,7 +64,7 @@ export default function DayView() {
                     className="h-[180px] w-[220px] min-w-[220px] overflow-hidden rounded-xl bg-zinc-950/80 ring-1 ring-white/10 shadow-lg"
                   >
                     <img
-                      src={ex.imageUrl ? `${ASSET_ORIGIN}${ex.imageUrl}` : undefined}
+                      src={ex.imageUrl ?? undefined}
                       alt={`Kako raditi: ${ex.name}`}
                       className="h-full w-full object-contain"
                     />
