@@ -44,6 +44,60 @@
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-zinc-200 transition hover:bg-white/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-zinc-200 transition hover:bg-white/10 active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-brand-emerald-400/30 bg-brand-emerald-400/10 px-3 py-2 text-sm font-medium text-brand-emerald-100 transition hover:bg-brand-emerald-400/20 active:scale-[0.98];
+  }
+}
+
+/* --- Animacije za modal / bottom-sheet --- */
+@keyframes ta-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ta-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ta-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: ta-fade-in 0.18s ease-out;
+}
+
+.animate-sheet-up {
+  animation: ta-sheet-up 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-pop-in {
+  animation: ta-pop-in 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-sheet-up,
+  .animate-pop-in {
+    animation: none;
   }
 }
