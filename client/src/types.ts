@@ -20,3 +20,26 @@ export interface WeekSchedule {
   name: string
   days: Day[]
 }
+
+export interface AiVideo {
+  videoId: string
+  title: string
+}
+
+export interface ExplainResult {
+  explanation: string
+  video: AiVideo | null
+}
+
+export interface AlternativeResult {
+  name: string
+  reason: string
+  video: AiVideo | null
+}
+
+/** Zamjena vježbe koju je korisnik izabrao (čuva se u localStorage). */
+export interface ExerciseOverride {
+  name: string
+  reason: string
+  video: AiVideo | null
+}

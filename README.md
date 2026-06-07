@@ -2,6 +2,24 @@
 
 Nedeljni raspored treninga (Push / Pull / Leg) sa opisima vežbi i slikama.
 
+## AI asistent za vježbe
+
+Na svakoj vježbi postoje dva dugmeta:
+
+- **🎥 Objasni mi vježbu** — AI (Claude Haiku 4.5) generiše objašnjenje izvođenja i prikazuje YouTube video baš za tu vježbu.
+- **🔄 Zamijeni vježbu** — AI predloži 3 alternative sa istim efektom; korisnik izabere jednu (zamjena se pamti u `localStorage`).
+
+Logika je u Vercel serverless funkciji `api/exercise-ai.ts` (ključevi ostaju na serveru).
+
+### Potrebne env varijable (Vercel → Project → Settings → Environment Variables)
+
+| Varijabla | Gdje se uzima |
+|-----------|---------------|
+| `ANTHROPIC_API_KEY` | https://console.anthropic.com (Claude API ključ) |
+| `YOUTUBE_API_KEY` | Google Cloud Console → YouTube Data API v3 (besplatno) |
+
+Bez ovih ključeva UI radi, ali AI dugmad vraćaju jasnu poruku o grešci.
+
 ## Lokalno pokretanje (bez backend-a)
 
 ```bash

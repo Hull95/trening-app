@@ -8,6 +8,7 @@
     "build": "npm run build --workspace=client"
   },
   "devDependencies": {
+    "@vercel/node": "^3.2.0",
     "concurrently": "^8.2.2"
   },
   "workspaces": [
